@@ -251,7 +251,7 @@
 
         for (const op of Object.keys(tagFunctions[tagName])) {
             for (const def of tagFunctions[tagName][op]) {
-                const {operation} = def;
+                const {operation, comment} = def;
                 let {path} = def;
                 const parameters: string[] = [];
 
@@ -293,6 +293,7 @@
                 // Replace any occurrences of "{variable}" with ":variable" for REST notation
                 path = path.replace(/\{(\w+)}/, ':$1');
 
+                routeBody += `        /**\n         * ${comment ?? 'No description for this service.'}\n         */\n`;
                 routeBody += `        app.${op}('${path}', async (req, res) => {\n`;
                 routeBody += '            try {\n';
 
