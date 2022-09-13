@@ -1,13 +1,13 @@
 {
-  "name": "open-dcmon",
+  "name": "rackoon",
   "version": "0.0.1",
-  "description": "Open Data Center Monitor",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "description": "Open Data Center Rack Monitor",
+  "main": "dist/server.js",
+  "types": "dist/server.d.ts",
   "scripts": {
     "generate": "mkdir -p src ; openapi-generator generate -i openapi/main.yml -g typescript-node ; rm -rf api api.ts git_push.sh ; rm -rf src/model ; mv model src",
     "generateOpenapi": "mkdir -p src/api ; ts-node bin/generator.ts",
-    "build": "npm run generate ; npm run generateOpenapi ; echo ; echo Building ; echo ; tsc",
+    "build": "npm run generate ; npm run generateOpenapi ; echo ; echo Building Rackoon ; echo ; tsc",
     "start": "npm run build ; ts-node bin/server.ts",
     "test": "echo No tests currently."
   },
