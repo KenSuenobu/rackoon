@@ -2,7 +2,7 @@ wwwroot/*.js
 node_modules
 typings
 dist
-.idea
+.idea/
 src/api
 src/model
 src/routes
