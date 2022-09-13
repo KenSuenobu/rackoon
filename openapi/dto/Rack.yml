@@ -1,0 +1,28 @@
+type: object
+description: Rack defines a mapping to the `opendc.rack` table.
+required:
+properties:
+  id:
+    description: ID of the Rack Object
+    type: integer
+    format: int32
+  ownerId:
+    description: Owner ID of the Rack object
+    type: integer
+    format: int32
+  name:
+    description: The name of the rack
+    type: string
+    nullable: false
+  description:
+    description: The description of the rack
+    type: string
+  rackLocation:
+    description: The location of the Rack in the Data Center
+    type: string
+    nullable: false
+  rackSize:
+    description: Size of the rack in U units
+    type: integer
+    format: int32
+    nullable: false

@@ -1,0 +1,32 @@
+{
+  "name": "open-dcmon",
+  "version": "0.0.1",
+  "description": "Open Data Center Monitor",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "generate": "mkdir -p src ; openapi-generator generate -i openapi/main.yml -g typescript-node ; rm -rf api api.ts git_push.sh ; rm -rf src/model ; mv model src",
+    "generateOpenapi": "mkdir -p src/api ; ts-node bin/generator.ts",
+    "build": "npm run generate ; npm run generateOpenapi ; echo ; echo Building ; echo ; tsc",
+    "start": "npm run build ; ts-node bin/server.ts",
+    "test": "echo No tests currently."
+  },
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "moduleResolution": "node"
+  },
+  "author": "ksuenobu@fastmail.com",
+  "license": "Apache License 2.0",
+  "files": [
+    "/dist"
+  ],
+  "dependencies": {
+    "express": "^4.18.1",
+    "request": "^2.88.2",
+    "typescript": "^4.8.3",
+    "yaml": "^2.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^18.7.14"
+  }
+}

@@ -1,0 +1,10 @@
+.gitignore
+api.ts
+api/apis.ts
+api/ownersApi.ts
+git_push.sh
+model/models.ts
+model/owner.ts
+model/rack.ts
+model/rackEquipment.ts
+model/rackEquipmentService.ts
