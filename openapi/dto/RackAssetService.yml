@@ -1,13 +1,17 @@
 type: object
-description: RackEquipmentService defines a mapping to the `opendc.rack_equipment_service` table.
+description: RackAssetService defines a mapping to the `opendc.rack_asset_service` table.
 required:
 properties:
   id:
-    description: ID of the Rack Equipment Service
+    description: ID of the Rack Asset Service
     type: integer
     format: int32
-  rackEquipmentId:
-    description: ID of the Rack Equipment that this service is a part of
+  creatorId:
+    description: ID of the User that created this object
+    type: integer
+    format: int32
+  rackAssetId:
+    description: ID of the Rack Asset that this service is a part of
     type: integer
     format: int32
     nullable: false

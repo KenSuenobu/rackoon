@@ -6,6 +6,10 @@ properties:
     description: ID of the Owner
     type: integer
     format: int32
+  creatorId:
+    description: ID of the User that created this object
+    type: integer
+    format: int32
   name:
     description: The name of the owner
     type: string

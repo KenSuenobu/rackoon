@@ -16,10 +16,10 @@ tags:
     description: Handles the manipulation of Data Center owner objects.  Owners are entities to which `Rack`s are associated.
   - name: Racks
     description: Handles the manipulation of `Rack`s with `Owner`s.
-  - name: RackEquipments
-    description: Handles the manipulation of `RackEquipment` objects against `Rack`s.
-  - name: RackEquipmentServices
-    description: Handles the manipulation of `RackEquipmentService` objects against `RackEquipment` objects.
+  - name: RackAssets
+    description: Handles the manipulation of `RackAsset` objects against `Rack`s.
+  - name: RackAssetServices
+    description: Handles the manipulation of `RackAssetService` objects against `RackAsset` objects.
 paths:
   /owner/create:
     post:
@@ -128,27 +128,27 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Rack'
-  /equipment/create:
+  /asset/create:
     post:
       tags:
-        - RackEquipments
+        - RackAssets
       description: Assigns equipment to a `Rack`
-      operationId: createEquipment
+      operationId: createAsset
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RackEquipment'
+              $ref: '#/components/schemas/RackAsset'
       responses:
         '201':
           description: Created
         '401':
           description: Unauthorized
-  /equipment/{name}/list:
+  /asset/{name}/list:
     get:
       tags:
-        - RackEquipments
-      description: Lists all of the `RackEquipment` objects assigned to a `Rack`
+        - RackAssets
+      description: Lists all of the `RackAsset` objects assigned to a `Rack`
       operationId: listEquipmentByRackName
       parameters:
         - name: name
@@ -165,8 +165,8 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/RackEquipment'
-  /equipment/{name}/delete:
+                  $ref: '#/components/schemas/RackAsset'
+  /asset/{name}/delete:
     delete:
       tags:
         - RackEquipments
@@ -185,14 +185,14 @@ paths:
   /service/create:
     post:
       tags:
-        - RackEquipmentServices
-      description: Assigns a `RackEquipmentService` to a `RackEquipment`
+        - RackAssetServices
+      description: Assigns a `RackAssetService` to a `RackAsset`
       operationId: createService
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RackEquipmentService'
+              $ref: '#/components/schemas/RackAssetService'
       responses:
         '201':
           description: Created
@@ -201,8 +201,8 @@ paths:
   /service/{name}/list:
     get:
       tags:
-        - RackEquipmentServices
-      description: Retrieves a list of `RackEquipmentService` objects for a `RackEquipment` object by its name
+        - RackAssetServices
+      description: Retrieves a list of `RackAssetService` objects for a `RackAsset` object by its name
       operationId: listServicesByName
       parameters:
         - name: name
@@ -219,12 +219,12 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/RackEquipmentService'
+                  $ref: '#/components/schemas/RackAssetService'
   /service/{name}/delete:
     delete:
       tags:
-        - RackEquipments
-      description: Removes a `RackEquipmentService` from its assigned `RackEquipment`, deleting the service
+        - RackAssetServices
+      description: Removes a `RackAssetService` from its assigned `RackAsset`, deleting the service
       operationId: deleteServiceByName
       parameters:
         - name: name
@@ -236,13 +236,53 @@ paths:
       responses:
         '200':
           description: OK
+  /user/create:
+    post:
+      tags:
+        - Users
+      description: Create a new user
+      operationId: createUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+  /user/login:
+    post:
+      tags:
+        - Users
+      description: Logs a user into the system
+      operationId: login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: string
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
 components:
   schemas:
     Owner:
       $ref: './dto/Owner.yml'
     Rack:
       $ref: './dto/Rack.yml'
-    RackEquipment:
-      $ref: './dto/RackEquipment.yml'
-    RackEquipmentService:
-      $ref: './dto/RackEquipmentService.yml'
+    RackAsset:
+      $ref: './dto/RackAsset.yml'
+    RackAssetService:
+      $ref: './dto/RackAssetService.yml'
+    User:
+      $ref: './dto/User.yml'

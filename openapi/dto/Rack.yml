@@ -6,6 +6,10 @@ properties:
     description: ID of the Rack Object
     type: integer
     format: int32
+  creatorId:
+    description: ID of the User that created this object
+    type: integer
+    format: int32
   ownerId:
     description: Owner ID of the Rack object
     type: integer

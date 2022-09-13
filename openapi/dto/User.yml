@@ -1,0 +1,33 @@
+type: object
+description: User defines a mapping to the `opendc.user` table.
+required:
+properties:
+  id:
+    description: ID of the User
+    type: integer
+    format: int32
+  name:
+    description: The name of the user
+    type: string
+    nullable: false
+  username:
+    description: Username for this account
+    type: string
+    nullable: false
+  password:
+    description: Password for this account
+    type: string
+    nullable: false
+  emailAddress:
+    description: E-Mail Address for this account
+    type: string
+    nullable: false
+  phoneNumber:
+    description: Phone Number associated with this account
+    type: string
+    nullable: false
+  isAdmin:
+    description: Flag indicating administrative privileges
+    type: boolean
+    nullable: false
+    defaultValue: false
