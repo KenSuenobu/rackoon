@@ -3,3 +3,7 @@ node_modules
 typings
 dist
 .idea
+src/api
+src/model
+src/routes
+

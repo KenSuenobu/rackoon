@@ -15,16 +15,57 @@ tags:
   - name: Owners
     description: Handles the manipulation of Data Center owner objects.  Owners are entities to which `Rack`s are associated.
 paths:
-  /:
-    get:
-      description: None
+  /owner/create:
+    post:
       tags:
         - Owners
+      description: Creates a new `Owner` object
+      operationId: createOwner
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Owner'
+      responses:
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+  /owner/{name}/get:
+    get:
+      tags:
+        - Owners
+      description: Retrieves an `Owner` by its ID
+      operationId: getOwnerByName
+      parameters:
+        - name: name
+          in: path
+          description: Owner Name
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: OK
-        '401':
-          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Owner'
+  /owner/list:
+    get:
+      tags:
+        - Owners
+      description: Retrieves a list of all of the registered `Owner`s
+      operationId: listOwners
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Owner'
 components:
   schemas:
     Owner:
