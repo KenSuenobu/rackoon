@@ -14,6 +14,12 @@ servers:
 tags:
   - name: Owners
     description: Handles the manipulation of Data Center owner objects.  Owners are entities to which `Rack`s are associated.
+  - name: Racks
+    description: Handles the manipulation of `Rack`s with `Owner`s.
+  - name: RackEquipments
+    description: Handles the manipulation of `RackEquipment` objects against `Rack`s.
+  - name: RackEquipmentServices
+    description: Handles the manipulation of `RackEquipmentService` objects against `RackEquipment` objects.
 paths:
   /owner/create:
     post:
@@ -66,6 +72,170 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Owner'
+  /rack/create:
+    post:
+      tags:
+        - Racks
+      description: Creates a new Rack` object
+      operationId: createRack
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Rack'
+      responses:
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+  /rack/{name}/delete:
+    delete:
+      tags:
+        - Racks
+      description: Deletes a rack
+      operationId: deleteRack
+      parameters:
+        - name: name
+          in: path
+          description: Owner Name
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+  /rack/{name}/list:
+    get:
+      tags:
+        - Racks
+      description: Retrieves a list of all of the registered `Rack`s for an `Owner`
+      operationId: listRacksByOwner
+      parameters:
+        - name: name
+          in: path
+          description: Owner Name
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Rack'
+  /equipment/create:
+    post:
+      tags:
+        - RackEquipments
+      description: Assigns equipment to a `Rack`
+      operationId: createEquipment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RackEquipment'
+      responses:
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+  /equipment/{name}/list:
+    get:
+      tags:
+        - RackEquipments
+      description: Lists all of the `RackEquipment` objects assigned to a `Rack`
+      operationId: listEquipmentByRackName
+      parameters:
+        - name: name
+          in: path
+          description: Rack Name
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RackEquipment'
+  /equipment/{name}/delete:
+    delete:
+      tags:
+        - RackEquipments
+      description: Removes a `RackEquipment` from its assigned `Rack`, deleting the equipment
+      operationId: deleteEquipmentByName
+      parameters:
+        - name: name
+          in: path
+          description: Rack Name
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+  /service/create:
+    post:
+      tags:
+        - RackEquipmentServices
+      description: Assigns a `RackEquipmentService` to a `RackEquipment`
+      operationId: createService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RackEquipmentService'
+      responses:
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+  /service/{name}/list:
+    get:
+      tags:
+        - RackEquipmentServices
+      description: Retrieves a list of `RackEquipmentService` objects for a `RackEquipment` object by its name
+      operationId: listServicesByName
+      parameters:
+        - name: name
+          in: path
+          description: Rack Equipment Name
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RackEquipmentService'
+  /service/{name}/delete:
+    delete:
+      tags:
+        - RackEquipments
+      description: Removes a `RackEquipmentService` from its assigned `RackEquipment`, deleting the service
+      operationId: deleteServiceByName
+      parameters:
+        - name: name
+          in: path
+          description: Rack Equipment Name
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
 components:
   schemas:
     Owner:

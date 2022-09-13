@@ -2,6 +2,9 @@
 api.ts
 api/apis.ts
 api/ownersApi.ts
+api/rackEquipmentServicesApi.ts
+api/rackEquipmentsApi.ts
+api/racksApi.ts
 git_push.sh
 model/models.ts
 model/owner.ts
