@@ -1,7 +1,4 @@
-DROP SCHEMA rackoon CASCADE;
-CREATE SCHEMA rackoon;
-
-CREATE TABLE rackoon.user (
+CREATE TABLE user (
     id SERIAL NOT NULL PRIMARY KEY,
     name varchar(200) NOT NULL,
     username VARCHAR(40) NOT NULL,
@@ -11,12 +8,12 @@ CREATE TABLE rackoon.user (
     is_admin BOOLEAN NOT NULL DEFAULT false
 );
 
-CREATE UNIQUE INDEX idx_user ON rackoon.user(username);
-CREATE UNIQUE INDEX idx_user_email ON rackoon.user(email_address);
+CREATE UNIQUE INDEX idx_user ON user(username);
+CREATE UNIQUE INDEX idx_user_email ON user(email_address);
 
-CREATE TABLE rackoon.owner (
+CREATE TABLE owner (
     id SERIAL NOT NULL PRIMARY KEY,
-    creator_id INT NOT NULL REFERENCES rackoon.user(id) ON DELETE CASCADE,
+    creator_id INT NOT NULL REFERENCES user(id) ON DELETE CASCADE,
     name varchar(80) NOT NULL,
     address_1 TEXT NOT NULL,
     address_2 TEXT,
@@ -29,40 +26,40 @@ CREATE TABLE rackoon.owner (
     primary_phone TEXT
 );
 
-CREATE UNIQUE INDEX idx_owner_unique ON rackoon.owner(name);
-CREATE UNIQUE INDEX idx_owner_company_name_unique ON rackoon.owner(company_name);
+CREATE UNIQUE INDEX idx_owner_unique ON owner(name);
+CREATE UNIQUE INDEX idx_owner_company_name_unique ON owner(company_name);
 
-CREATE TABLE rackoon.rack (
+CREATE TABLE rack (
     id SERIAL NOT NULL PRIMARY KEY,
-    creator_id INT NOT NULL REFERENCES rackoon.user(id) ON DELETE CASCADE,
-    owner_id INT NOT NULL REFERENCES rackoon.owner(id) ON DELETE CASCADE,
+    creator_id INT NOT NULL REFERENCES user(id) ON DELETE CASCADE,
+    owner_id INT NOT NULL REFERENCES owner(id) ON DELETE CASCADE,
     name varchar(80) NOT NULL,
     description TEXT,
     rack_location TEXT NOT NULL,
     rack_size INT NOT NULL
 );
 
-CREATE UNIQUE INDEX idx_rack_owner ON rackoon.rack(owner_id, name);
+CREATE UNIQUE INDEX idx_rack_owner ON rack(owner_id, name);
 
-CREATE TABLE rackoon.rack_asset (
+CREATE TABLE rack_asset (
     id SERIAL NOT NULL PRIMARY KEY,
-    creator_id INT NOT NULL REFERENCES rackoon.user(id) ON DELETE CASCADE,
-    rack_id INT NOT NULL REFERENCES rackoon.rack(id) ON DELETE CASCADE,
+    creator_id INT NOT NULL REFERENCES user(id) ON DELETE CASCADE,
+    rack_id INT NOT NULL REFERENCES rack(id) ON DELETE CASCADE,
     rack_position_start varchar(10) NOT NULL,
     rack_position_end varchar(10) NOT NULL,
     name varchar(80) NOT NULL,
     description TEXT
 );
 
-CREATE UNIQUE INDEX idx_rack_asset ON rackoon.rack_asset(rack_id, rack_position_start, rack_position_end);
+CREATE UNIQUE INDEX idx_rack_asset ON rack_asset(rack_id, rack_position_start, rack_position_end);
 
-CREATE TABLE rackoon.rack_asset_service (
+CREATE TABLE rack_asset_service (
     id SERIAL NOT NULL PRIMARY KEY,
-    creator_id INT NOT NULL REFERENCES rackoon.user(id) ON DELETE CASCADE,
-    rack_asset_id INT NOT NULL REFERENCES rackoon.rack_asset(id) ON DELETE CASCADE,
+    creator_id INT NOT NULL REFERENCES user(id) ON DELETE CASCADE,
+    rack_asset_id INT NOT NULL REFERENCES rack_asset(id) ON DELETE CASCADE,
     name VARCHAR(80) NOT NULL,
     description TEXT,
     access_url TEXT
 );
 
-CREATE UNIQUE INDEX idx_rack_asset_service ON rackoon.rack_asset_service(rack_asset_id, name);
+CREATE UNIQUE INDEX idx_rack_asset_service ON rack_asset_service(rack_asset_id, name);
