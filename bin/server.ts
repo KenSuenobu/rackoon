@@ -1,5 +1,5 @@
 /**
- * Open-DCMon
+ * Rackoon
  */
 
 import {OpenDCController} from "../src/api";
