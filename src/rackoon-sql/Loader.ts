@@ -11,7 +11,7 @@ export class Loader {
      * included in the SQL statements.
      *
      * @param dbFile The name of the destination Sqlite3 database.
-     * @param scriptFile The script file to process.å
+     * @param scriptFile The script file to process.
      */
     public static loadSql(dbFile: string, scriptFile: string) {
         const sqlite3 = require('sqlite3').verbose();

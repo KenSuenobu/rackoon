@@ -17,7 +17,7 @@ import {Loader} from "../src/rackoon-sql/Loader";
     const port = 3000;
     const controller: OpenDCController = new OpenDCController();
 
-    Loader.loadSql('sql/main.sql', 'db/rackoon.db');
+    Loader.loadSql('db/rackoon.db', 'sql/main.sql');
     OpenDCRouter.registerAll(app, controller);
 
     app.listen(port, () => {
