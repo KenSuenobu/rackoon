@@ -9,5 +9,6 @@ provide a simplistic layout of racks in a network.
 ## Requirements
 
 - openapi-generator
+- sqlite3
 - typescript-express-openapi-generator ([Get it here](https://github.com/KenSuenobu/typescript-express-openapi-generator))
 - Access to a Data Center
