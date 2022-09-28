@@ -14,7 +14,7 @@ import {Loader} from "../src/rackoon-sql/Loader";
 
     app.use(bodyParser.json());
 
-    const port = 3000;
+    const port = 3001;
     const controller: OpenDCController = new OpenDCController();
 
     Loader.loadSql('db/rackoon.db', 'sql/main.sql');
