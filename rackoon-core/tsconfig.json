@@ -3,9 +3,9 @@
     "module": "commonjs",
     "target": "es6",
     "declaration": true,
-    "outDir": "./dist"
+    "outDir": "../dist"
   },
   "include": [
-    "src/**/*"
+    "rackoon-core/src/**/*"
   ]
 }

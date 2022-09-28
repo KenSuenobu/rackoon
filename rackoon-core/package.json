@@ -8,7 +8,7 @@
     "generate": "mkdir -p src ; mkdir -p db ; touch db/rackoon.db ; openapi-generator generate -i openapi/main.yml -g typescript-node ; rm -rf api api.ts git_push.sh ; rm -rf src/model ; mv model src",
     "generateOpenapi": "mkdir -p src/api ; ts-node bin/generator.ts",
     "clean": "rm -rf src/api src/model src/routes rackoon.db",
-    "build": "npm run generate ; npm run generateOpenapi ; echo ; echo Building Rackoon ; echo ; tsc",
+    "build": "npm run generate ; npm run generateOpenapi ; echo ; echo Building Rackoon ; echo ; ../node_modules/.bin/tsc",
     "start": "npm run build ; ts-node bin/server.ts",
     "test": "echo No tests currently."
   },

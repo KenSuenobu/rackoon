@@ -1,9 +1,9 @@
 wwwroot/*.js
-node_modules
+../node_modules
 typings
 dist
 .idea/
-src/api
-src/model
-src/routes
+rackoon-core/src/api
+rackoon-core/src/model
+rackoon-core/src/routes
 
