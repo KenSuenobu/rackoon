@@ -15,15 +15,18 @@
 // specific language governing permissions and limitations
 // under the License.
 
-import React from 'react';
+import React from "react";
 
 export const SideNavigation: React.FunctionComponent = () => {
-    return (
-        <nav>
-            Home<p/>
-            Users<p/>
-            Racks<p/>
-            Jobs
-        </nav>
-    );
-}
+  return (
+    <nav>
+      Home
+      <p />
+      Users
+      <p />
+      Racks
+      <p />
+      Jobs
+    </nav>
+  );
+};

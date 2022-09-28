@@ -15,12 +15,8 @@
 // specific language governing permissions and limitations
 // under the License.
 
-import React from 'react';
+import React from "react";
 
 export const Header: React.FunctionComponent = () => {
-    return (
-        <div>
-            Rackoon
-        </div>
-    )
-}
+  return <div>Rackoon</div>;
+};
