@@ -20,6 +20,7 @@ import React from 'react';
 export const SideNavigation: React.FunctionComponent = () => {
     return (
         <nav>
+            Home<p/>
             Users<p/>
             Racks<p/>
             Jobs
