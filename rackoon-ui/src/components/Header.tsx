@@ -16,17 +16,11 @@
 // under the License.
 
 import React from 'react';
-import { Header } from './components/Header';
 
-import "./App.css";
-
-const App: React.FunctionComponent<any> = () => {
+export const Header: React.FunctionComponent = () => {
     return (
         <div>
-            <Header />
-            <h1>Welcome!</h1>
+            Rackoon
         </div>
-    );
-};
-
-export default App;
+    )
+}
