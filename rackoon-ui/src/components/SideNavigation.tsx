@@ -16,19 +16,13 @@
 // under the License.
 
 import React from 'react';
-import { Header } from './components/Header';
-import { SideNavigation } from "./components/SideNavigation";
 
-import "./App.css";
-
-const App: React.FunctionComponent<any> = () => {
+export const SideNavigation: React.FunctionComponent = () => {
     return (
-        <div>
-            <Header />
-            <SideNavigation />
-            <h1>Welcome!</h1>
-        </div>
+        <nav>
+            Users<p/>
+            Racks<p/>
+            Jobs
+        </nav>
     );
-};
-
-export default App;
+}
