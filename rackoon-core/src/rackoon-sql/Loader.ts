@@ -1,4 +1,5 @@
 import * as fs from "fs";
+import { Database } from "sqlite3";
 
 /**
  * This is a simple SQL file loader that loads in SQL statements and applies them to a Sqlite3 database.
@@ -12,7 +13,7 @@ export class Loader {
    * @param dbFile The name of the destination Sqlite3 database.
    * @param scriptFile The script file to process.
    */
-  public static loadSql(dbFile: string, scriptFile: string) {
+  public static loadSql(dbFile: string, scriptFile: string): Database {
     const sqlite3 = require("sqlite3").verbose();
     const db = new sqlite3.Database(dbFile);
     const sqlScript = fs.readFileSync(scriptFile, "utf8");
@@ -35,6 +36,6 @@ export class Loader {
       }
     });
 
-    db.close();
+    return db;
   }
 }
