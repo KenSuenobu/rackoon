@@ -6,6 +6,6 @@
     "outDir": "../dist"
   },
   "include": [
-    "rackoon-core/src/**/*"
+    "src/**/*"
   ]
 }

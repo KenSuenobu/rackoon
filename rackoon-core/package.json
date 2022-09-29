@@ -9,7 +9,7 @@
     "generateOpenapi": "mkdir -p src/api ; ts-node bin/generator.ts",
     "clean": "rm -rf src/api src/model src/routes rackoon.db",
     "format": "prettier --write 'src/**/*.{ts,tsx}'",
-    "build": "npm run generate ; npm run generateOpenapi ; echo ; echo Building Rackoon ; echo ; ../node_modules/.bin/tsc",
+    "build": "npm run generate ; npm run generateOpenapi ; echo ; echo Building Rackoon ; echo ; tsc",
     "start": "npm run build ; ts-node bin/server.ts",
     "test": "echo No tests currently."
   },
@@ -27,10 +27,10 @@
     "express": "^4.18.1",
     "request": "^2.88.2",
     "sqlite3": "^5.1.1",
-    "typescript": "^4.8.3",
+    "typescript": "^4.8.4",
     "yaml": "^2.1.1"
   },
   "devDependencies": {
-    "@types/node": "^18.7.18"
+    "@types/node": "^18.7.23"
   }
 }
