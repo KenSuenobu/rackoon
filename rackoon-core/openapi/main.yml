@@ -31,11 +31,11 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Owner'
+              $ref: "#/components/schemas/Owner"
       responses:
-        '201':
+        "201":
           description: Created
-        '401':
+        "401":
           description: Unauthorized
   /owner/{name}/get:
     get:
@@ -51,12 +51,12 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Owner'
+                $ref: "#/components/schemas/Owner"
   /owner/list:
     get:
       tags:
@@ -64,14 +64,14 @@ paths:
       description: Retrieves a list of all of the registered `Owner`s
       operationId: listOwners
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Owner'
+                  $ref: "#/components/schemas/Owner"
   /rack/create:
     post:
       tags:
@@ -82,13 +82,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Rack'
+              $ref: "#/components/schemas/Rack"
       responses:
-        '201':
+        "201":
           description: Created
-        '401':
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
   /rack/{name}/delete:
     delete:
@@ -104,7 +104,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: OK
   /rack/{name}/list:
     get:
@@ -120,14 +120,14 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Rack'
+                  $ref: "#/components/schemas/Rack"
   /asset/create:
     post:
       tags:
@@ -138,11 +138,11 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RackAsset'
+              $ref: "#/components/schemas/RackAsset"
       responses:
-        '201':
+        "201":
           description: Created
-        '401':
+        "401":
           description: Unauthorized
   /asset/{name}/list:
     get:
@@ -158,14 +158,14 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/RackAsset'
+                  $ref: "#/components/schemas/RackAsset"
   /asset/{name}/delete:
     delete:
       tags:
@@ -180,7 +180,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: OK
   /service/create:
     post:
@@ -192,11 +192,11 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RackAssetService'
+              $ref: "#/components/schemas/RackAssetService"
       responses:
-        '201':
+        "201":
           description: Created
-        '401':
+        "401":
           description: Unauthorized
   /service/{name}/list:
     get:
@@ -212,14 +212,14 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/RackAssetService'
+                  $ref: "#/components/schemas/RackAssetService"
   /service/{name}/delete:
     delete:
       tags:
@@ -234,7 +234,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: OK
   /user/create:
     post:
@@ -246,11 +246,11 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/User'
+              $ref: "#/components/schemas/User"
       responses:
-        '201':
+        "201":
           description: Created
-        '401':
+        "401":
           description: Unauthorized
   /user/login:
     post:
@@ -264,25 +264,25 @@ paths:
             schema:
               type: object
       responses:
-        '200':
+        "200":
           description: Created
           content:
             application/json:
               schema:
                 type: string
-        '401':
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
 components:
   schemas:
     Owner:
-      $ref: './dto/Owner.yml'
+      $ref: "./dto/Owner.yml"
     Rack:
-      $ref: './dto/Rack.yml'
+      $ref: "./dto/Rack.yml"
     RackAsset:
-      $ref: './dto/RackAsset.yml'
+      $ref: "./dto/RackAsset.yml"
     RackAssetService:
-      $ref: './dto/RackAssetService.yml'
+      $ref: "./dto/RackAssetService.yml"
     User:
-      $ref: './dto/User.yml'
+      $ref: "./dto/User.yml"
