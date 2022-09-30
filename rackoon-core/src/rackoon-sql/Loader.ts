@@ -19,8 +19,6 @@ export class Loader {
     const sqlScript = fs.readFileSync(scriptFile, "utf8");
     let sqlStatement = "";
 
-    console.log(`Applying ${scriptFile} to ${dbFile} Sqlite3 database.`);
-
     db.serialize(() => {
       for (const sqlLine of sqlScript.split("\n")) {
         if (sqlLine.trim().startsWith("--")) {
