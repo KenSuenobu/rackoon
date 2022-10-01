@@ -1,16 +1,9 @@
 import * as pgPromise from "pg-promise";
 import { Member } from "../model/member";
+import { MappableDAO } from "./MappableDAO";
 
 export class MemberDAO {
   private readonly mappedFields = [
-    {
-      field: "id",
-      databaseField: "id",
-    },
-    {
-      field: "name",
-      databaseField: "name",
-    },
     {
       field: "username",
       databaseField: "username",
@@ -31,6 +24,7 @@ export class MemberDAO {
       field: "isAdmin",
       databaseField: "is_admin",
     },
+    ...MappableDAO.commonFields,
   ];
 
   constructor(private db) {}
@@ -51,33 +45,19 @@ export class MemberDAO {
           ]
         )
         .then((res) => {
-          return <Member>{
-            id: res.id,
-            name: res.name,
-            username: res.username,
-            password: res.password,
-            emailAddress: res.email_address,
-            phoneNumber: res.phone_number,
-            isAdmin: res.is_admin,
-          };
+          return <Member>MappableDAO.mapFields(this.mappedFields, res);
         });
     });
   }
 
   async get(username: string, password: string): Promise<Member> {
-    const newObject = await this.db.one(
-      "SELECT * FROM member WHERE username=$1 AND password=$2 LIMIT 1",
-      [username, password]
-    );
-
-    return <Member>{
-      id: newObject.id,
-      name: newObject.name,
-      username: newObject.username,
-      password: newObject.password,
-      emailAddress: newObject.email_address,
-      phoneNumber: newObject.phone_number,
-      isAdmin: newObject.is_admin,
-    };
+    return this.db
+      .one("SELECT * FROM member WHERE username=$1 AND password=$2 LIMIT 1", [
+        username,
+        password,
+      ])
+      .then((result) => {
+        return <Member>MappableDAO.mapFields(this.mappedFields, result);
+      });
   }
 }
