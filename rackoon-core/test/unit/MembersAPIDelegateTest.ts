@@ -10,7 +10,6 @@ describe("#MembersAPIDelegateTest", () => {
   const db = pgp({
     host: "localhost",
     port: 5432,
-    user: "kenji",
   });
   const delegate = new MembersAPIDelegateImpl(db);
 
