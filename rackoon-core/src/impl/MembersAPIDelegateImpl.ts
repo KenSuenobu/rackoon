@@ -13,6 +13,12 @@ export class MembersAPIDelegateImpl extends MembersAPIDelegate {
     this.memberDao = new MemberDAO(dbInstance);
   }
 
+  /*
+   * Create a new member
+   *
+   * Path: '/member/create'
+   * Response codes: 201, 401
+   */
   override async createMember(request: { payload?: Member }): Promise<void> {
     if (!request.payload) {
       throw new Error("Missing account information.");
