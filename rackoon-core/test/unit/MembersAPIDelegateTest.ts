@@ -1,9 +1,9 @@
 import { expect } from "chai";
 import * as fs from "fs";
-import { UsersAPIDelegate } from "../../src/api";
-import { UsersAPIDelegateImpl } from "../../src/impl/UsersAPIDelegateImpl";
+import { MembersAPIDelegate } from "../../src/api";
+import { MembersAPIDelegateImpl } from "../../src/impl/MembersAPIDelegateImpl";
 
-describe("#UsersAPIDelegateTest", () => {
+describe("#MembersAPIDelegateTest", () => {
   // it("should create a user entry", () => {
   //   const db = Loader.loadSql("./test/db/rackoon.db", "./sql/main.sql");
   //   const delegate = new UsersAPIDelegateImpl(db);

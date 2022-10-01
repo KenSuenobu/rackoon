@@ -4,7 +4,6 @@
 
 import { OpenDCController } from "../src/api";
 import { OpenDCRouter } from "../src/routes/OpenDCRouter";
-import { UsersAPIDelegateImpl } from "../src/impl/UsersAPIDelegateImpl";
 
 (async () => {
   const express = require("express");

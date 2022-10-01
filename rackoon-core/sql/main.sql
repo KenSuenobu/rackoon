@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS users CASCADE;
-CREATE TABLE IF NOT EXISTS users (
+DROP TABLE IF EXISTS member CASCADE;
+CREATE TABLE IF NOT EXISTS member (
     id SERIAL NOT NULL PRIMARY KEY,
     name varchar(200) NOT NULL,
     username VARCHAR(40) NOT NULL,
@@ -9,15 +9,15 @@ CREATE TABLE IF NOT EXISTS users (
     is_admin BOOLEAN NOT NULL DEFAULT false
 );
 
-DROP INDEX IF EXISTS idx_user CASCADE;
-DROP INDEX IF EXISTS idx_user_email CASCADE;
-CREATE UNIQUE INDEX IF NOT EXISTS idx_user ON users(username);
-CREATE UNIQUE INDEX IF NOT EXISTS idx_user_email ON users(email_address);
+DROP INDEX IF EXISTS idx_member CASCADE;
+DROP INDEX IF EXISTS idx_member_email CASCADE;
+CREATE UNIQUE INDEX IF NOT EXISTS idx_member ON member(username);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_member_email ON member(email_address);
 
 DROP TABLE IF EXISTS owner CASCADE;
 CREATE TABLE IF NOT EXISTS owner (
     id SERIAL NOT NULL PRIMARY KEY,
-    creator_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    creator_id INT NOT NULL REFERENCES member(id) ON DELETE CASCADE,
     name varchar(80) NOT NULL,
     address_1 TEXT NOT NULL,
     address_2 TEXT,
@@ -38,7 +38,7 @@ CREATE UNIQUE INDEX IF NOT EXISTS idx_owner_company_name_unique ON owner(company
 DROP TABLE IF EXISTS rack CASCADE;
 CREATE TABLE IF NOT EXISTS rack (
     id SERIAL NOT NULL PRIMARY KEY,
-    creator_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    creator_id INT NOT NULL REFERENCES member(id) ON DELETE CASCADE,
     owner_id INT NOT NULL REFERENCES owner(id) ON DELETE CASCADE,
     name varchar(80) NOT NULL,
     description TEXT,
@@ -52,7 +52,7 @@ CREATE UNIQUE INDEX IF NOT EXISTS idx_rack_owner ON rack(owner_id, name);
 DROP TABLE IF EXISTS rack_asset CASCADE;
 CREATE TABLE IF NOT EXISTS rack_asset (
     id SERIAL NOT NULL PRIMARY KEY,
-    creator_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    creator_id INT NOT NULL REFERENCES member(id) ON DELETE CASCADE,
     rack_id INT NOT NULL REFERENCES rack(id) ON DELETE CASCADE,
     rack_position_start varchar(10) NOT NULL,
     rack_position_end varchar(10) NOT NULL,
@@ -66,7 +66,7 @@ CREATE UNIQUE INDEX IF NOT EXISTS idx_rack_asset ON rack_asset(rack_id, rack_pos
 DROP TABLE IF EXISTS rack_asset_service CASCADE;
 CREATE TABLE IF NOT EXISTS rack_asset_service (
     id SERIAL NOT NULL PRIMARY KEY,
-    creator_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    creator_id INT NOT NULL REFERENCES member(id) ON DELETE CASCADE,
     rack_asset_id INT NOT NULL REFERENCES rack_asset(id) ON DELETE CASCADE,
     name VARCHAR(80) NOT NULL,
     description TEXT,

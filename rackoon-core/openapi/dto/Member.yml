@@ -1,5 +1,5 @@
 type: object
-description: User defines a mapping to the `opendc.user` table.
+description: Users defines a mapping to the `opendc.users` table.
 required:
 properties:
   id:

@@ -236,27 +236,27 @@ paths:
       responses:
         "200":
           description: OK
-  /user/create:
+  /member/create:
     post:
       tags:
-        - Users
-      description: Create a new user
-      operationId: createUser
+        - Members
+      description: Create a new member
+      operationId: createMember
       requestBody:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/User"
+              $ref: "#/components/schemas/Member"
       responses:
         "201":
           description: Created
         "401":
           description: Unauthorized
-  /user/login:
+  /member/login:
     post:
       tags:
-        - Users
-      description: Logs a user into the system
+        - Members
+      description: Logs a member into the system
       operationId: login
       requestBody:
         content:
@@ -276,6 +276,8 @@ paths:
           description: Not Found
 components:
   schemas:
+    Member:
+      $ref: "./dto/Member.yml"
     Owner:
       $ref: "./dto/Owner.yml"
     Rack:
@@ -284,5 +286,3 @@ components:
       $ref: "./dto/RackAsset.yml"
     RackAssetService:
       $ref: "./dto/RackAssetService.yml"
-    User:
-      $ref: "./dto/User.yml"

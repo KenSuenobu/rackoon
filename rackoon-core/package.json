@@ -11,7 +11,7 @@
     "format": "prettier --write 'src/**/*.{ts,tsx}'",
     "build": "cat sql/main.sql | psql ; npm run generate ; npm run generateOpenapi ; echo ; echo Building Rackoon ; echo ; tsc",
     "start": "npm run build ; ts-node bin/server.ts",
-    "test": "rm -rf test/db ; mocha"
+    "test": "mocha"
   },
   "compilerOptions": {
     "esModuleInterop": true,
