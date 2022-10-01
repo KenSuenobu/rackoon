@@ -4,26 +4,11 @@ import { MappableDAO } from "./MappableDAO";
 
 export class MemberDAO {
   private readonly mappedFields = [
-    {
-      field: "username",
-      databaseField: "username",
-    },
-    {
-      field: "password",
-      databaseField: "password",
-    },
-    {
-      field: "emailAddress",
-      databaseField: "email_address",
-    },
-    {
-      field: "phoneNumber",
-      databaseField: "phone_number",
-    },
-    {
-      field: "isAdmin",
-      databaseField: "is_admin",
-    },
+    "username",
+    "password",
+    "emailAddress",
+    "phoneNumber",
+    "isAdmin",
     ...MappableDAO.commonFields,
   ];
 

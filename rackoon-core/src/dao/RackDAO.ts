@@ -3,26 +3,11 @@ import { MappableDAO } from "./MappableDAO";
 
 export class RackDAO {
   private readonly mappedFields = [
-    {
-      field: "creatorId",
-      databaseField: "creator_id",
-    },
-    {
-      field: "ownerId",
-      databaseField: "owner_id",
-    },
-    {
-      field: "description",
-      databaseField: "description",
-    },
-    {
-      field: "rackLocation",
-      databaseField: "rack_location",
-    },
-    {
-      field: "rackSize",
-      databaseField: "rack_size",
-    },
+    "creatorId",
+    "ownerId",
+    "description",
+    "rackLocation",
+    "rackSize",
     ...MappableDAO.commonFields,
   ];
 
