@@ -169,8 +169,8 @@ paths:
   /asset/{name}/delete:
     delete:
       tags:
-        - RackEquipments
-      description: Removes a `RackEquipment` from its assigned `Rack`, deleting the equipment
+        - RackAssets
+      description: Removes a `RackAsset` from its assigned `Rack`, deleting the equipment
       operationId: deleteEquipmentByName
       parameters:
         - name: name

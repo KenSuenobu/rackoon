@@ -53,6 +53,14 @@ export class OwnerDAO {
       });
   }
 
+  async getByName(name: string): Promise<Owner> {
+    return this.db
+      .one("SELECT * FROM owner WHERE name=$1 LIMIT 1", [name])
+      .then((result) => {
+        return <Owner>MappableDAO.mapFields(this.mappedFields, result);
+      });
+  }
+
   async listByCreatorId(creatorId: number): Promise<Owner[]> {
     return this.db
       .all("SELECT * FROM owner WHERE creatorId=$1", [creatorId])

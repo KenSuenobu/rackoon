@@ -1,7 +1,15 @@
 import { RackAssetServicesAPIDelegate } from "../api";
 import { RackAssetService } from "../model/rackAssetService";
+import { RackAssetServiceDAO } from "../dao/RackAssetServiceDAO";
 
 export class RackAssetServicesAPIDelegateImpl extends RackAssetServicesAPIDelegate {
+  private readonly rackAssetServiceDao: RackAssetServiceDAO;
+
+  constructor(private dbInstance) {
+    super();
+    this.rackAssetServiceDao = new RackAssetServiceDAO(dbInstance);
+  }
+
   override async createService(request: {
     payload?: RackAssetService;
   }): Promise<void> {
